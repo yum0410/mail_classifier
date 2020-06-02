@@ -47,10 +47,9 @@ d3.json(DATA_FILE_PATH).then(function(data) { // v5
         .attr("transform", function(d) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
-        .text(function(d) { return d.text; });
-        // .on("click", function (d, i){
-        //     window.open(d.url, "_blank");
-        // });
+      .text(function(d) { return d.text; })
+      .on("click", function (d, i){
+            alert(d.text)
+      });
   }
-
 });
