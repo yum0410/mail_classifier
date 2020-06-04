@@ -49,7 +49,23 @@ d3.json(DATA_FILE_PATH).then(function(data) { // v5
         })
       .text(function(d) { return d.text; })
       .on("click", function (d, i){
-            alert(d.text)
+        app.append_data({"word": d.text, "count": d.size})
       });
   }
 });
+
+var app = new Vue({
+  el: '#app',
+  data: {
+      items: [
+          {"word": "hoge", "count": 5},
+          {"word": "huga", "count": 3}
+      ]
+  },
+  methods: {
+    append_data: function(event) {
+        var item = {"word": event.word, "count": event.count}
+        this.items.push(item)
+    }
+}
+})
