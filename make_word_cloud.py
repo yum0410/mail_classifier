@@ -28,14 +28,14 @@ if __name__ == "__main__":
     splitted = [x for x in list(map(format_text, splitted)) if x is not ""]
     word_data = Counter(splitted)
     word_data_json = OrderedDict()
+    word_data_list = []
     DROP_MIN_COUNT = 10
     for values in word_data.most_common():
         if values[1] > DROP_MIN_COUNT:
-            word_data_json[values[0]] = values[1]
-
+            word_data_list.append({"word": values[0], "count": values[1]})
     JSON_FILE_NAME = 'word_data.json'
     with open(JSON_FILE_NAME, 'w') as f:
-        json.dump(word_data_json, f, indent=4, ensure_ascii=False)
+        json.dump(word_data_list, f, indent=4, ensure_ascii=False)
 
     splitted = "".join(splitted)
     FONT_PATH = "./ipaexg.ttf"
