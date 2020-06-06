@@ -60,12 +60,16 @@ var app = new Vue({
       items: [
           {"word": "hoge", "count": 5},
           {"word": "huga", "count": 3}
-      ]
+      ],
+      word_list: ["hoge", "huga"]
   },
   methods: {
     append_data: function(event) {
         var item = {"word": event.word, "count": event.count}
-        this.items.push(item)
+        if (!this.word_list.includes(item["word"])){
+          this.items.push(item)
+          this.word_list.push(item["word"])
+        }
     }
 }
 })
